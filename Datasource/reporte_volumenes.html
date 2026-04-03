@@ -1,0 +1,421 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Volúmenes - Bloques de Mina</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #1f4788;
+            border-bottom: 3px solid #ff6b35;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #2c5aa0;
+            margin-top: 30px;
+            border-left: 5px solid #ff6b35;
+            padding-left: 15px;
+        }
+        .stats-box {
+            background-color: #f0f8ff;
+            border-left: 4px solid #2c5aa0;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        .alert {
+            background-color: #fff3cd;
+            border-left: 4px solid #ff6b35;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th {
+            background-color: #1f4788;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        .highlight {
+            background-color: #fffacd;
+            font-weight: bold;
+        }
+        .metric {
+            display: inline-block;
+            background-color: #e8f4f8;
+            padding: 15px 20px;
+            margin: 10px;
+            border-radius: 4px;
+            text-align: center;
+            border-left: 4px solid #2c5aa0;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #1f4788;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #666;
+            margin-top: 5px;
+        }
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            font-size: 12px;
+            color: #666;
+        }
+        .notes {
+            background-color: #f0fff0;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 REPORTE DE VOLÚMENES Y MEDIDAS GEOMÉTRICAS</h1>
+        <p><strong>Proyecto:</strong> Mining AI Optimization</p>
+        <p><strong>Fecha:</strong> 2 de abril de 2026</p>
+        <p><strong>Total de Bloques Analizados:</strong> 200</p>
+        
+        <h2>🎯 RESUMEN EJECUTIVO</h2>
+        
+        <div style="display: flex; flex-wrap: wrap;">
+            <div class="metric">
+                <div class="metric-value">193,634</div>
+                <div class="metric-label">Volumen Total (m³)</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">968.17</div>
+                <div class="metric-label">Volumen Promedio (m³)</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">9.58</div>
+                <div class="metric-label">Lado Promedio (m)</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">522,813</div>
+                <div class="metric-label">Toneladas Totales</div>
+            </div>
+        </div>
+
+        <div class="alert">
+            <strong>ℹ️ Nota Importante:</strong> Los volúmenes fueron calculados utilizando una <strong>densidad estándar de 2.7 ton/m³</strong> 
+            (típica para roca mineralizada con oro y plata). Los bloques se asumen como <strong>cubos</strong> para fines de cálculo de geometría.
+        </div>
+
+        <h2>📈 ESTADÍSTICAS DETALLADAS</h2>
+
+        <h3>Volumen de Bloques (m³)</h3>
+        <div class="stats-box">
+            <p><strong>Volumen Total:</strong> 193,634.41 m³</p>
+            <p><strong>Promedio:</strong> 968.17 m³</p>
+            <p><strong>Desviación Estándar:</strong> 476.23 m³</p>
+            <p><strong>Mínimo:</strong> 192.91 m³ (Bloque #42)</p>
+            <p><strong>Máximo:</strong> 1846.64 m³ (Bloque #68)</p>
+            <p><strong>Percentil 25:</strong> 541.32 m³</p>
+            <p><strong>Mediana (Percentil 50):</strong> 939.96 m³</p>
+            <p><strong>Percentil 75:</strong> 1314.20 m³</p>
+        </div>
+
+        <h3>Lado del Bloque Equivalente (m) - Asumiendo Geometría Cúbica</h3>
+        <div class="stats-box">
+            <p><strong>Promedio:</strong> 9.58 m</p>
+            <p><strong>Desviación Estándar:</strong> 1.79 m</p>
+            <p><strong>Mínimo:</strong> 5.78 m</p>
+            <p><strong>Máximo:</strong> 12.27 m</p>
+            <p><strong>Rango:</strong> 6.49 m</p>
+        </div>
+
+        <h3>Toneladas de Mineral</h3>
+        <div class="stats-box">
+            <p><strong>Total:</strong> 522,812.71 toneladas</p>
+            <p><strong>Promedio:</strong> 2614.06 toneladas por bloque</p>
+            <p><strong>Desviación Estándar:</strong> 1285.81 toneladas</p>
+            <p><strong>Mínimo:</strong> 520.84 toneladas</p>
+            <p><strong>Máximo:</strong> 4985.93 toneladas</p>
+        </div>
+
+        <h2>📍 ESTADÍSTICAS POR NIVEL MINERO</h2>
+
+        <table>
+            <tr>
+                <th>Nivel</th>
+                <th>Bloques</th>
+                <th>Vol. Total (m³)</th>
+                <th>Vol. Promedio (m³)</th>
+                <th>Vol. Mín-Máx (m³)</th>
+                <th>Lado Promedio (m)</th>
+                <th>Ton. Total</th>
+                <th>Ton. Promedio</th>
+            </tr>
+
+            <tr>
+                <td class="highlight">1</td>
+                <td>25</td>
+                <td>24,972.48</td>
+                <td>998.90</td>
+                <td>215.84 - 1825.86</td>
+                <td>9.56</td>
+                <td>67,425.60</td>
+                <td>2697.02</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">2</td>
+                <td>18</td>
+                <td>16,094.84</td>
+                <td>894.16</td>
+                <td>215.37 - 1786.97</td>
+                <td>9.21</td>
+                <td>43,456.09</td>
+                <td>2414.23</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">3</td>
+                <td>23</td>
+                <td>21,414.77</td>
+                <td>931.08</td>
+                <td>203.51 - 1727.80</td>
+                <td>9.38</td>
+                <td>57,819.85</td>
+                <td>2513.91</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">4</td>
+                <td>22</td>
+                <td>21,010.18</td>
+                <td>955.01</td>
+                <td>192.91 - 1611.35</td>
+                <td>9.56</td>
+                <td>56,727.46</td>
+                <td>2578.52</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">5</td>
+                <td>20</td>
+                <td>19,365.56</td>
+                <td>968.28</td>
+                <td>229.41 - 1685.22</td>
+                <td>9.64</td>
+                <td>52,286.96</td>
+                <td>2614.35</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">6</td>
+                <td>17</td>
+                <td>16,906.23</td>
+                <td>994.48</td>
+                <td>206.86 - 1738.72</td>
+                <td>9.68</td>
+                <td>45,646.79</td>
+                <td>2685.11</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">7</td>
+                <td>28</td>
+                <td>29,745.30</td>
+                <td>1062.33</td>
+                <td>296.98 - 1826.59</td>
+                <td>10.00</td>
+                <td>80,312.28</td>
+                <td>2868.30</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">8</td>
+                <td>25</td>
+                <td>23,324.88</td>
+                <td>933.00</td>
+                <td>440.77 - 1763.99</td>
+                <td>9.58</td>
+                <td>62,977.17</td>
+                <td>2519.09</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">9</td>
+                <td>22</td>
+                <td>20,800.17</td>
+                <td>945.46</td>
+                <td>207.01 - 1846.64</td>
+                <td>9.44</td>
+                <td>56,160.51</td>
+                <td>2552.75</td>
+            </tr>
+
+        </table>
+
+        <h2>📋 TOP 10 BLOQUES POR VOLUMEN</h2>
+
+        <table>
+            <tr>
+                <th>ID Bloque</th>
+                <th>Nivel</th>
+                <th>Volumen (m³)</th>
+                <th>Lado (m)</th>
+                <th>Toneladas</th>
+                <th>Coordenadas (x, y, z)</th>
+            </tr>
+
+            <tr>
+                <td class="highlight">68</td>
+                <td>9</td>
+                <td>1846.64</td>
+                <td>12.27</td>
+                <td>4985.93</td>
+                <td>(966.7, 753.4, -160.4)</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">31</td>
+                <td>7</td>
+                <td>1826.59</td>
+                <td>12.22</td>
+                <td>4931.79</td>
+                <td>(548.7, 319.3, -480.3)</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">153</td>
+                <td>1</td>
+                <td>1825.86</td>
+                <td>12.22</td>
+                <td>4929.81</td>
+                <td>(14.4, 996.6, -167.4)</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">64</td>
+                <td>2</td>
+                <td>1786.97</td>
+                <td>12.13</td>
+                <td>4824.82</td>
+                <td>(370.2, 370.6, -336.3)</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">138</td>
+                <td>9</td>
+                <td>1765.94</td>
+                <td>12.09</td>
+                <td>4768.04</td>
+                <td>(173.3, 810.6, -17.5)</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">10</td>
+                <td>8</td>
+                <td>1763.99</td>
+                <td>12.08</td>
+                <td>4762.78</td>
+                <td>(241.9, 806.8, -424.0)</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">90</td>
+                <td>1</td>
+                <td>1762.04</td>
+                <td>12.08</td>
+                <td>4757.52</td>
+                <td>(293.6, 963.2, -357.5)</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">192</td>
+                <td>7</td>
+                <td>1746.57</td>
+                <td>12.04</td>
+                <td>4715.73</td>
+                <td>(18.2, 783.7, -76.8)</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">27</td>
+                <td>9</td>
+                <td>1742.46</td>
+                <td>12.03</td>
+                <td>4704.65</td>
+                <td>(101.5, 389.2, -396.8)</td>
+            </tr>
+
+            <tr>
+                <td class="highlight">17</td>
+                <td>6</td>
+                <td>1738.72</td>
+                <td>12.02</td>
+                <td>4694.53</td>
+                <td>(726.0, 858.4, -166.2)</td>
+            </tr>
+
+        </table>
+
+        <h2>🔍 NOTAS TÉCNICAS</h2>
+        <div class="notes">
+            <h4>Metodología de Cálculo:</h4>
+            <ul>
+                <li><strong>Densidad utilizada:</strong> 2.7 ton/m³ (estándar para minerales de oro/plata en roca)</li>
+                <li><strong>Volumen (m³) = Toneladas / Densidad</strong></li>
+                <li><strong>Lado del bloque (m) = ∛(Volumen)</strong> (asumiendo geometría cúbica)</li>
+            </ul>
+            <h4>Fuente de Datos:</h4>
+            <ul>
+                <li>Archivo: Datasource/bloques_mina.csv</li>
+                <li>Total de registros: {len(bloques)}</li>
+                <li>Niveles mineros: {len(bloques['nivel'].unique())}</li>
+            </ul>
+        </div>
+
+        <h2>📁 ARCHIVOS GENERADOS</h2>
+        <div class="stats-box">
+            <ul>
+                <li><strong>bloques_volumenes.csv</strong> - Detalle de volumen para cada bloque</li>
+                <li><strong>estadisticas_por_nivel.csv</strong> - Resumen estadístico por nivel</li>
+                <li><strong>analisis_volumenes.png</strong> - Gráficos de análisis</li>
+                <li><strong>reporte_volumenes.html</strong> - Este reporte</li>
+            </ul>
+        </div>
+
+        <div class="footer">
+            <p><strong>Reporte generado automáticamente</strong> - Proyecto Mining AI Optimization</p>
+            <p>Para más información, consulte los archivos CSV y el análisis gráfico adjunto.</p>
+        </div>
+    </div>
+</body>
+</html>

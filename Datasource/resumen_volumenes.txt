@@ -1,0 +1,184 @@
+
+╔════════════════════════════════════════════════════════════════════════════════╗
+║          REPORTE DE VOLÚMENES Y MEDIDAS GEOMÉTRICAS - BLOQUES DE MINA         ║
+║                                                                                ║
+║                      Proyecto: Mining AI Optimization                          ║
+║                         Fecha: 2 de abril de 2026                             ║
+╚════════════════════════════════════════════════════════════════════════════════╝
+
+═════════════════════════════════════════════════════════════════════════════════
+RESUMEN EJECUTIVO
+═════════════════════════════════════════════════════════════════════════════════
+
+Total de Bloques Analizados:           {len(bloques)} unidades
+
+Densidad del Mineral Utilizada:        2.7 ton/m³
+(Estándar para minerales de oro/plata en roca)
+
+═════════════════════════════════════════════════════════════════════════════════
+VOLÚMENES (m³)
+═════════════════════════════════════════════════════════════════════════════════
+
+    Volumen Total              :  {bloques['volumen_m3'].sum():>15,.2f} m³
+    Volumen Promedio           :  {bloques['volumen_m3'].mean():>15,.2f} m³
+    Desviación Estándar        :  {bloques['volumen_m3'].std():>15,.2f} m³
+    
+    Mínimo                     :  {bloques['volumen_m3'].min():>15,.2f} m³  (Bloque #{int(bloques.loc[bloques['volumen_m3'].idxmin(), 'id_bloque'])})
+    Máximo                     :  {bloques['volumen_m3'].max():>15,.2f} m³  (Bloque #{int(bloques.loc[bloques['volumen_m3'].idxmax(), 'id_bloque'])})
+    
+    Percentil 25%              :  {bloques['volumen_m3'].quantile(0.25):>15,.2f} m³
+    Mediana                    :  {bloques['volumen_m3'].median():>15,.2f} m³
+    Percentil 75%              :  {bloques['volumen_m3'].quantile(0.75):>15,.2f} m³
+
+═════════════════════════════════════════════════════════════════════════════════
+MEDIDAS GEOMÉTRICAS - LADO DEL BLOQUE (m)
+═════════════════════════════════════════════════════════════════════════════════
+(Asumiendo bloques de geometría cúbica: Lado = ∛Volumen)
+
+    Lado Promedio              :  {bloques['lado_bloque_m'].mean():>15,.2f} m
+    Desviación Estándar        :  {bloques['lado_bloque_m'].std():>15,.2f} m
+    
+    Mínimo                     :  {bloques['lado_bloque_m'].min():>15,.2f} m
+    Máximo                     :  {bloques['lado_bloque_m'].max():>15,.2f} m
+    Rango                      :  {bloques['lado_bloque_m'].max() - bloques['lado_bloque_m'].min():>15,.2f} m
+
+═════════════════════════════════════════════════════════════════════════════════
+TONELADAS DE MINERAL
+═════════════════════════════════════════════════════════════════════════════════
+
+    Total de Toneladas         :  {bloques['toneladas'].sum():>15,.2f} ton
+    Promedio por Bloque        :  {bloques['toneladas'].mean():>15,.2f} ton
+    Desviación Estándar        :  {bloques['toneladas'].std():>15,.2f} ton
+    
+    Mínimo                     :  {bloques['toneladas'].min():>15,.2f} ton
+    Máximo                     :  {bloques['toneladas'].max():>15,.2f} ton
+
+═════════════════════════════════════════════════════════════════════════════════
+ESTADÍSTICAS POR NIVEL MINERO
+═════════════════════════════════════════════════════════════════════════════════
+
+Nivel 1:
+  • Cantidad de Bloques        :   25 bloques
+  • Volumen Total             :     24,972.48 m³
+  • Volumen Promedio          :        998.90 m³
+  • Volumen Min-Max           :  215.84 - 1825.86 m³
+  • Lado Promedio             :          9.56 m
+  • Toneladas Total           :     67,425.60 ton
+  • Toneladas Promedio        :      2,697.02 ton
+
+Nivel 2:
+  • Cantidad de Bloques        :   18 bloques
+  • Volumen Total             :     16,094.84 m³
+  • Volumen Promedio          :        894.16 m³
+  • Volumen Min-Max           :  215.37 - 1786.97 m³
+  • Lado Promedio             :          9.21 m
+  • Toneladas Total           :     43,456.09 ton
+  • Toneladas Promedio        :      2,414.23 ton
+
+Nivel 3:
+  • Cantidad de Bloques        :   23 bloques
+  • Volumen Total             :     21,414.77 m³
+  • Volumen Promedio          :        931.08 m³
+  • Volumen Min-Max           :  203.51 - 1727.80 m³
+  • Lado Promedio             :          9.38 m
+  • Toneladas Total           :     57,819.85 ton
+  • Toneladas Promedio        :      2,513.91 ton
+
+Nivel 4:
+  • Cantidad de Bloques        :   22 bloques
+  • Volumen Total             :     21,010.18 m³
+  • Volumen Promedio          :        955.01 m³
+  • Volumen Min-Max           :  192.91 - 1611.35 m³
+  • Lado Promedio             :          9.56 m
+  • Toneladas Total           :     56,727.46 ton
+  • Toneladas Promedio        :      2,578.52 ton
+
+Nivel 5:
+  • Cantidad de Bloques        :   20 bloques
+  • Volumen Total             :     19,365.56 m³
+  • Volumen Promedio          :        968.28 m³
+  • Volumen Min-Max           :  229.41 - 1685.22 m³
+  • Lado Promedio             :          9.64 m
+  • Toneladas Total           :     52,286.96 ton
+  • Toneladas Promedio        :      2,614.35 ton
+
+Nivel 6:
+  • Cantidad de Bloques        :   17 bloques
+  • Volumen Total             :     16,906.23 m³
+  • Volumen Promedio          :        994.48 m³
+  • Volumen Min-Max           :  206.86 - 1738.72 m³
+  • Lado Promedio             :          9.68 m
+  • Toneladas Total           :     45,646.79 ton
+  • Toneladas Promedio        :      2,685.11 ton
+
+Nivel 7:
+  • Cantidad de Bloques        :   28 bloques
+  • Volumen Total             :     29,745.30 m³
+  • Volumen Promedio          :      1,062.33 m³
+  • Volumen Min-Max           :  296.98 - 1826.59 m³
+  • Lado Promedio             :         10.00 m
+  • Toneladas Total           :     80,312.28 ton
+  • Toneladas Promedio        :      2,868.30 ton
+
+Nivel 8:
+  • Cantidad de Bloques        :   25 bloques
+  • Volumen Total             :     23,324.88 m³
+  • Volumen Promedio          :        933.00 m³
+  • Volumen Min-Max           :  440.77 - 1763.99 m³
+  • Lado Promedio             :          9.58 m
+  • Toneladas Total           :     62,977.17 ton
+  • Toneladas Promedio        :      2,519.09 ton
+
+Nivel 9:
+  • Cantidad de Bloques        :   22 bloques
+  • Volumen Total             :     20,800.17 m³
+  • Volumen Promedio          :        945.46 m³
+  • Volumen Min-Max           :  207.01 - 1846.64 m³
+  • Lado Promedio             :          9.44 m
+  • Toneladas Total           :     56,160.51 ton
+  • Toneladas Promedio        :      2,552.75 ton
+
+═════════════════════════════════════════════════════════════════════════════════
+TOP 10 BLOQUES POR VOLUMEN
+═════════════════════════════════════════════════════════════════════════════════
+
+  ID Nivel    Volumen (m³)     Lado (m)       Toneladas
+-------------------------------------------------------
+  68     9         1846.64        12.27         4985.93
+  31     7         1826.59        12.22         4931.79
+ 153     1         1825.86        12.22         4929.81
+  64     2         1786.97        12.13         4824.82
+ 138     9         1765.94        12.09         4768.04
+  10     8         1763.99        12.08         4762.78
+  90     1         1762.04        12.08         4757.52
+ 192     7         1746.57        12.04         4715.73
+  27     9         1742.46        12.03         4704.65
+  17     6         1738.72        12.02         4694.53
+
+═════════════════════════════════════════════════════════════════════════════════
+ARCHIVOS GENERADOS
+═════════════════════════════════════════════════════════════════════════════════
+
+✓ bloques_volumenes.csv           - Detalle completo de cada bloque
+✓ estadisticas_por_nivel.csv      - Resumen estadístico por nivel
+✓ analisis_volumenes.png          - Gráficos de análisis visual
+✓ reporte_volumenes.html          - Reporte interactivo en HTML
+✓ resumen_volumenes.txt           - Este resumen en texto
+
+═════════════════════════════════════════════════════════════════════════════════
+NOTAS TÉCNICAS
+═════════════════════════════════════════════════════════════════════════════════
+
+Metodología de Cálculo:
+  • Densidad utilizada : 2.7 ton/m³ (estándar para minerales de oro/plata)
+  • Volumen (m³)      : Toneladas ÷ Densidad
+  • Lado del bloque   : ∛(Volumen en m³) - asumiendo geometría cúbica
+
+Supuestos:
+  • Los bloques se asumen como cubos regulares
+  • La densidad es constante para todos los bloques
+  • Los datos provienen del archivo bloques_mina.csv
+
+═════════════════════════════════════════════════════════════════════════════════
+Generado automáticamente - Proyecto Mining AI Optimization
+═════════════════════════════════════════════════════════════════════════════════
