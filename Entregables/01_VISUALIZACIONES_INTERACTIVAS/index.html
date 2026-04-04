@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Minado - Dashboard Interactivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+        
+        .info-box {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9ff;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .info-card h3 {
+            color: #667eea;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .info-card .value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .section-title .emoji {
+            font-size: 1.2em;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #667eea;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        .card-description {
+            color: #666;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+            min-height: 50px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .badge {
+            display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        
+        .badge.featured {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .footer {
+            background: #f8f9ff;
+            padding: 30px;
+            text-align: center;
+            border-top: 2px solid #667eea;
+            color: #666;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .featured-section {
+            background: linear-gradient(135deg, #fff5e1 0%, #ffe8cc 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #ff6b6b;
+            margin-bottom: 30px;
+        }
+        
+        .featured-section h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .featured-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ff6b6b;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .featured-card h4 {
+            color: #ff6b6b;
+            margin-bottom: 8px;
+        }
+        
+        .featured-card p {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .featured-card a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .featured-card a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Plan de Minado Interactivo</h1>
+            <p>Dashboard completo de análisis de consumo de reservas y beneficio económico</p>
+        </div>
+        
+        <div class="info-box">
+            <div class="info-card">
+                <h3>📦 Bloques Totales</h3>
+                <div class="value">200</div>
+            </div>
+            <div class="info-card">
+                <h3>⏰ Períodos Planificados</h3>
+                <div class="value">10</div>
+            </div>
+            <div class="info-card">
+                <h3>💎 Toneladas Totales</h3>
+                <div class="value">5.2 M</div>
+            </div>
+            <div class="info-card">
+                <h3>💵 Beneficio Total</h3>
+                <div class="value">$471 M</div>
+            </div>
+        </div>
+        
+        <div class="content">
+            <!-- SECCIÓN DESTACADA -->
+            <div class="featured-section">
+                <h3>⭐ VISUALIZACIONES PRINCIPALES</h3>
+                <div class="featured-grid">
+                    <div class="featured-card">
+                        <h4>🎬 Animación 3D en Tiempo Real</h4>
+                        <p>Observa cómo se van extrayendo los bloques mes a mes. Incluye controles de reproducción y slider interactivo.</p>
+                        <a href="animacion_3d_minado.html" target="_blank">Abrir animación ▶</a>
+                        <span class="badge featured">RECOMENDADO</span>
+                    </div>
+                    <div class="featured-card">
+                        <h4>📈 Dashboard Completo</h4>
+                        <p>Panel integrado con 6 gráficos que muestran toneladas, margen económico y ley de oro en paralelo.</p>
+                        <a href="dashboard_plan_minado.html" target="_blank">Ver dashboard ▶</a>
+                        <span class="badge featured">COMPLETO</span>
+                    </div>
+                    <div class="featured-card">
+                        <h4>📋 Resumen en CSV</h4>
+                        <p>Tabla detallada con datos de cada mes: toneladas, margen, bloques extraídos y leyes promedio.</p>
+                        <a href="resumen_plan_minado.csv" target="_blank">Descargar CSV ▶</a>
+                        <span class="badge featured">DATOS</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CONSUMO DE RESERVAS -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">📉</span>
+                    Consumo de Reservas
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-header">Consumo Acumulado por Nivel</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Visualiza cómo se van agotando las reservas de cada nivel conforme avanza el tiempo. Cada línea representa un nivel minero diferente.
+                            </div>
+                            <a href="consumo_acumulado.html" target="_blank" class="btn">Ver Gráfico →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Extracción Mensual por Nivel</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Barras apiladas que muestran cuántas toneladas se extraen de cada nivel en cada período mensual.
+                            </div>
+                            <a href="consumo_mensual_apilado.html" target="_blank" class="btn">Ver Gráfico →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Mapa de Calor Temporal</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Matriz de colores que muestra la intensidad de extracción en cada nivel durante cada período.
+                            </div>
+                            <a href="mapa_calor_consumo.html" target="_blank" class="btn">Ver Mapa →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ANÁLISIS ECONÓMICO -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">💰</span>
+                    Análisis Económico
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-header">Beneficio por Período</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Seguimiento del margen económico mensual y acumulado. Incluye análisis separado por nivel minero.
+                            </div>
+                            <a href="beneficio_economico.html" target="_blank" class="btn">Ver Beneficios →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Diagrama Waterfall</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Visualización de flujo que muestra cómo se acumula el beneficio período a período y el efecto acumulativo.
+                            </div>
+                            <a href="waterfall_beneficio.html" target="_blank" class="btn">Ver Waterfall →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Consumo vs Beneficio</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Gráfico dual que compara el consumo mensual de toneladas con el crecimiento del beneficio económico acumulado.
+                            </div>
+                            <a href="consumo_3d_periodos.html" target="_blank" class="btn">Ver Comparativo →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ANÁLISIS POR NIVEL -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">🔍</span>
+                    Análisis Detallado por Nivel
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-header">Resumen por Nivel</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Análisis comparativo de todos los niveles mineros: toneladas totales, beneficio, ley de oro y cantidad de bloques.
+                            </div>
+                            <a href="analisis_por_nivel.html" target="_blank" class="btn">Ver Análisis →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- MODELO 3D ESTÁTICO -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">🎯</span>
+                    Modelo 3D de Bloques
+                </div>
+                <div class="grid">
+                    <div class="card">
+                        <div class="card-header">Visualización 3D Estática</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Representación tridimensional de todos los bloques con codificación de color según la ley de oro estimada.
+                            </div>
+                            <a href="modelo_bloques_3d.png" target="_blank" class="btn">Ver Imagen →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Modelo 3D Interactivo</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Visualización interactiva donde puedes rotar, hacer zoom y ver detalles de cada bloque al pasar el cursor.
+                            </div>
+                            <a href="modelo_bloques_3d_interactivo.html" target="_blank" class="btn">Ver Interactivo →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Análisis de Leyes</div>
+                        <div class="card-body">
+                            <div class="card-description">
+                                Gráficos comparativos de distribución de leyes de oro y plata, con análisis de correlación.
+                            </div>
+                            <a href="comparativo_leyes.png" target="_blank" class="btn">Ver Comparativo →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GUÍA DE USO -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">❓</span>
+                    Guía de Uso
+                </div>
+                <div style="background: #f8f9ff; padding: 25px; border-radius: 10px; border-left: 4px solid #667eea;">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">Cómo interpretar los gráficos</h3>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                        <div>
+                            <h4>🎬 Animación 3D</h4>
+                            <p>Usa los botones ▶ y ⏸ para reproducir/pausar. El slider inferior permite navegar entre períodos. Los colores más oscuros indican extracción más reciente.</p>
+                        </div>
+                        
+                        <div>
+                            <h4>📊 Gráficos de Barras</h4>
+                            <p>Las barras apiladas muestran la composición por nivel. Puedes hacer hover para ver valores exactos y hacer click en la leyenda para ocultar/mostrar series.</p>
+                        </div>
+                        
+                        <div>
+                            <h4>📈 Gráficos de Líneas</h4>
+                            <p>Las líneas muestran tendencias acumulativas. La pendiente indica la velocidad de consumo. Líneas más pronunciadas = consumo más rápido.</p>
+                        </div>
+                        
+                        <div>
+                            <h4>🔥 Mapas de Calor</h4>
+                            <p>Los colores más claros (amarillo) indican menor actividad, y los más oscuros (rojo) indican mayor extracción en esa combinación nivel-período.</p>
+                        </div>
+                        
+                        <div>
+                            <h4>💻 Interactividad</h4>
+                            <p>Todos los gráficos permiten: hacer zoom (rueda del mouse), mover (drag), descargar como PNG, y hacer hover para ver datos detallados.</p>
+                        </div>
+                        
+                        <div>
+                            <h4>📥 Exportación</h4>
+                            <p>Puedes descargar el archivo CSV para análisis adicionales en Excel o utilizar los datos en tu propio software de análisis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p><strong>Plan de Minado - Dashboard Interactivo</strong></p>
+            <p>Generado con Plotly para Python | Datos procesados y visualizados en tiempo real</p>
+            <p style="font-size: 0.9em; margin-top: 15px; color: #999;">© 2024 - Análisis de Reservas Mineras</p>
+        </div>
+    </div>
+</body>
+</html>

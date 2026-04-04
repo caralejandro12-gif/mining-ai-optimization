@@ -1,0 +1,265 @@
+================================================================================
+PROYECTO DE MINERÍA SUBTERRÁNEA - ÍNDICE DE ARCHIVOS
+================================================================================
+Fecha de generación: 03 de abril de 2026
+
+ESTRUCTURA DE ENTREGABLES:
+└── Entregables/
+    ├── 01_VISUALIZACIONES_INTERACTIVAS/    (Dashboards y gráficos 3D)
+    ├── 02_DATOS_FUENTE/                     (Archivos CSV con datos)
+    ├── 03_REPORTES_GRAFICOS/                (Imágenes PNG estáticas)
+    ├── 04_DOCUMENTACION/                    (Documentos de texto)
+    ├── 05_SCRIPTS_FUENTE/                   (Código Python reproducible)
+    ├── INFORME_PROYECTO_MINERIA.pdf        (Informe consolidado ⭐)
+    ├── LEEME.txt                           (Documentación general)
+    └── INDICE_ARCHIVOS.txt                 (Este archivo)
+
+================================================================================
+1. VISUALIZACIONES INTERACTIVAS (CARPETA 01_)
+================================================================================
+
+ARCHIVO PRINCIPAL:
+  📊 animacion_3d_minado.html
+     → RECOMENDADO ABRIR PRIMERO
+     → Animación 3D con estrategia ascendente de extracción
+     → Botones: REPRODUCIR, PAUSA
+     → Slider: Navegación por período
+     → Colores: ROJO = extrayendo ahora, GRIS = por extraer
+     → Profundidad: -490m a -5m (ascendente)
+
+DASHBOARDS EJECUTIVOS:
+  📈 dashboard_plan_minado.html
+     → Consolidación 6-en-1: temporal, espacial, económica, geológica
+     → Ideal para presentaciones y reportes
+
+VISUALIZACIÓN GEOLÓGICA:
+  🧊 modelo_bloques_3d_interactivo.html
+     → Modelo estático 3D con colores por ley de oro (Viridis)
+     → Permite rotación, zoom interactivo
+
+ANÁLISIS TEMPORAL:
+  📉 consumo_acumulado.html
+     → Evolución de reservas por nivel/profundidad
+     → Consumo acumulativo lineal
+
+  📊 consumo_mensual_apilado.html
+     → Comparativa planta vs stock por período
+     → Distribución de mineral procesado
+
+  📈 consumo_3d_periodos.html
+     → Gráfico dual: producción mensual vs acumulativa
+     → Validación de estabilidad operacional
+
+ANÁLISIS ECONÓMICO:
+  💰 beneficio_economico.html
+     → Retorno económico por período
+     → Margen operacional integrado
+
+  💵 waterfall_beneficio.html
+     → Cascada de valor (contribución incremental)
+     → Visualización de flujo de caja
+
+ANÁLISIS GEOTÉCNICO:
+  🗺️  analisis_por_nivel.html
+     → Variabilidad geológica por profundidad
+
+  🔥 mapa_calor_consumo.html
+     → Intensidad de extracción (período vs profundidad)
+     → Identifica hotspots de operación
+
+REPORTES ADICIONALES:
+  📋 reporte_volumenes.html
+     → Estadísticas volumétricas
+
+================================================================================
+2. DATOS FUENTE (CARPETA 02_)
+================================================================================
+
+  📝 bloques_volumenes.csv (200 registros)
+     Columnas: id_bloque, nivel, x, y, z, toneladas, volumen_m3, lado_bloque_m
+     Uso: Geometría y ubicación de bloques
+
+  ⛏️  bloques_mina.csv (200 registros)
+     Columnas: id_bloque, nivel, x, y, z, toneladas, leyes, dureza, etc.
+     Uso: Propiedades geotécnicas
+
+  🎯 bloques_estandarizados.csv (200 registros)
+     Columnas: id_bloque, clasificación, factor_dilucion, etc.
+     Uso: Parámetros de blocaje
+
+  📅 planificacion.csv (200 registros)
+     Columnas: id_bloque, periodo, destino, toneladas_enviadas, margen
+     Uso: Plan de minado por período
+
+  📊 resumen_plan_minado.csv
+     Agregados por período: toneladas, margen, ley promedio
+
+  🏭 planta_lixiviacion.csv
+     Especificaciones de planta
+
+  📈 estadisticas_por_nivel.csv
+     Resumen estadístico por nivel geológico
+
+================================================================================
+3. REPORTES GRÁFICOS (CARPETA 03_)
+================================================================================
+
+  🖼️  modelo_bloques_3d.png
+     Visualización estática 3D con colores por ley
+
+  🔄 comparativo_leyes.png
+     Distribución Au vs Ag
+
+  📊 analisis_volumenes.png
+     Histogramas de tonelajes y volúmenes
+
+  🎨 analisis_estandarizacion.png
+     Clasificación de bloques
+
+  📐 analisis_medidas_optimas.png
+     Ecuaciones de tamaño óptimo
+
+================================================================================
+4. DOCUMENTACIÓN (CARPETA 04_)
+================================================================================
+
+  📄 resumen_estandarizacion.txt
+     Detalles del blocaje y clasificación
+
+  📄 resumen_volumenes.txt
+     Estadísticas volumétricas
+
+================================================================================
+5. SCRIPTS FUENTE (CARPETA 05_)
+================================================================================
+
+ARCHIVOS PYTHON (reproducibilidad 100%):
+
+  🐍 Bloque1.py
+     - Carga datos desde CSV
+     - Merging de tablas
+     - Preparación para análisis
+
+  🐍 Plani2.py
+     - Generación del plan de minado
+     - Asignación de bloques a períodos
+     - Cálculo de márgenes
+
+  🐍 animacion_minado_3d.py [Principal]
+     - Creación de animación 3D Plotly
+     - Simulación de extracción período a período
+     - Generación de dashboards adicionales
+
+  🐍 graficar_bloques_3d.py
+     - Visualización estática/interactiva 3D
+     - Comparativos de leyes
+
+  🐍 plan_minado_interactivo.py
+     - Dashboards ejecutivos
+     - Gráficas de consumo y beneficio
+     - Tabla de resumen
+
+  🐍 agregar_insights.py
+     - Conclusiones e interpretaciones técnicas
+     - Inyección de contenido en HTML
+
+Para ejecutar y reproducir el análisis:
+  $ python Bloque1.py
+  $ python Plani2.py
+  $ python animacion_minado_3d.py
+
+================================================================================
+6. FICHERO INFORME PDF
+================================================================================
+
+  📑 INFORME_PROYECTO_MINERIA.pdf ⭐
+     Contenido:
+     1. Portada y tabla de contenidos
+     2. Introducción y objetivos
+     3. Conceptos mineros técnicos (Cut & Fill)
+     4. Herramientas informáticas utilizadas
+     5. Datos y parámetros del proyecto
+     6. Análisis técnico integrado
+     7. Resultados y conclusiones
+     8. Recomendaciones
+     9. Anexos con lista de archivos
+
+     Ideal para: Presentaciones ejecutivas, propuestas, documentación
+
+================================================================================
+CÓMO UTILIZARLO
+================================================================================
+
+OPCIÓN 1: EXPLORACIÓN VISUAL (RECOMENDADA)
+  1. Abrir: 01_VISUALIZACIONES_INTERACTIVAS/animacion_3d_minado.html
+  2. Presionar: REPRODUCIR
+  3. Navegar: Slider inferior para avance manual
+  4. Analizar: Insights mostrados bajo la animación
+
+OPCIÓN 2: ANÁLISIS DETALLADO
+  1. Abrir: 01_VISUALIZACIONES_INTERACTIVAS/dashboard_plan_minado.html
+  2. Analizar: 6 perspectivas diferentes
+  3. Consultar: CSV en 02_DATOS_FUENTE/ para datos crudos
+
+OPCIÓN 3: LECTURA DE REPORTE
+  1. Abrir: INFORME_PROYECTO_MINERIA.pdf
+  2. Leer: Resumen ejecutivo con todos los conceptos
+
+OPCIÓN 4: REPRODUCCIÓN TÉCNICA
+  1. Python 3.14+ instalado
+  2. Dependencias: pip install pandas numpy plotly matplotlib reportlab
+  3. Ejecutar: python 05_SCRIPTS_FUENTE/animacion_minado_3d.py
+  4. Salida: Se regeneran todas las visualizaciones
+
+================================================================================
+CONCEPTOS CLAVE IMPLEMENTADOS
+================================================================================
+
+MINERÍA SUBTERRÁNEA:
+  ✓ Cut & Fill Ascendente
+  ✓ Extracción de profundidad máxima (-490m) a mínima (-5m)
+  ✓ Relleno con estéril reduce presiones estructurales
+
+CRITERIOS TÉCNICOS:
+  ✓ Cut-off Grade Au: 2.5 g/ton
+  ✓ Destino Planta: ley ≥ 2.5 g/ton
+  ✓ Destino Stock: ley < 2.5 g/ton (acopio)
+
+PARÁMETROS DEL PROYECTO:
+  ✓ 200 bloques geotécnicos
+  ✓ 10 períodos operacionales
+  ✓ ~520,000 toneladas totales
+  ✓ ~USD 500M beneficio económico
+  ✓ Ley promedio Au: 2.28 g/ton
+
+HERRAMIENTAS IT:
+  ✓ Python 3.14 - Lenguaje base
+  ✓ Pandas - Manipulación de datos
+  ✓ Plotly 6.6 - Visualizaciones 3D
+  ✓ Matplotlib - Gráficas estáticas
+  ✓ ReportLab - Generación PDF
+  ✓ VS Code + venv - Entorno desarrollo
+
+================================================================================
+VALIDACIONES Y CALIDAD
+================================================================================
+
+✓ Datos consistentes: 200 bloques en 10 períodos = 200 registros
+✓ Lógica de extracción: Ascendente validada (Z creciente)
+✓ Económica: Márgenes positivos en todos los períodos
+✓ Visualizaciones: Insights técnicos integrados en cada gráfica
+✓ Reproducibilidad: Scripts Python 100% documentados
+
+================================================================================
+CONTACTO / PREGUNTAS
+================================================================================
+
+Para dudas sobre:
+  - Modelos geológicos: Revisar bloques_mina.csv
+  - Plan de minado: Consultar planificacion.csv
+  - Análisis económico: Ver beneficio_economico.html
+  - Código: Revisar 05_SCRIPTS_FUENTE/
+
+================================================================================
+FIN DE DOCUMENTO
+================================================================================

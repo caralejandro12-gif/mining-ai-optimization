@@ -1,0 +1,136 @@
+# PROYECTO DE MINERÍA SUBTERRÁNEA - ANÁLISIS Y VISUALIZACIÓN
+
+## Descripción
+Análisis integral de viabilidad técnica y económica de explotación minera subterránea tipo "Cut & Fill" ascendente con 200 bloques de mineral distribuidos en 10 períodos operacionales.
+
+## Estructura de Carpetas
+
+### 01_VISUALIZACIONES_INTERACTIVAS/
+Dashboards y gráficas interactivas en HTML con Plotly.js
+- **animacion_3d_minado.html** - Animación del plan de extracción progresiva (PRINCIPAL)
+- **dashboard_plan_minado.html** - Dashboard ejecutivo 6-en-1
+- **modelo_bloques_3d_interactivo.html** - Modelo geológico 3D
+- **consumo_acumulado.html** - Evolución de reservas
+- **consumo_mensual_apilado.html** - Distribución por destino (planta vs stock)
+- **beneficio_economico.html** - Análisis de retorno económico
+- **consumo_3d_periodos.html** - Comparativo mensual vs acumulativo
+- **mapa_calor_consumo.html** - Intensidad de extracción (profundidad vs período)
+- **waterfall_beneficio.html** - Cascada de valor económico
+
+### 02_DATOS_FUENTE/
+Archivos CSV con datos geológicos y económicos
+- **bloques_estandarizados.csv** - Blocaje estandarizado (200 bloques)
+- **bloques_mina.csv** - Propiedades geotécnicas (nivel, ley Au/Ag, dureza, etc.)
+- **bloques_volumenes.csv** - Geometría de bloques (coordenadas x,y,z, dimensiones)
+- **planificacion.csv** - Plan de minado (período, destino, tonelajes, márgenes)
+- **estadisticas_por_nivel.csv** - Resumen estadístico por nivel geológico
+
+### 03_REPORTES_GRAFICOS/
+Gráficas estáticas en PNG para reportes
+- **modelo_bloques_3d.png** - Visualización estática 3D con leyes
+- **comparativo_leyes.png** - Distribución Au vs Ag
+- **analisis_volumenes.png** - Histogramas de tonelajes
+
+### 04_DOCUMENTACION/
+Documentos de resumen
+- **resumen_estandarizacion.txt** - Detalles del blocaje
+- **resumen_volumenes.txt** - Estadísticas volumétricas
+
+### 05_SCRIPTS_FUENTE/
+Código Python fuente (reproducibilidad)
+- **Bloque1.py** - Carga y procesamiento de datos base
+- **Plani2.py** - Generación del plan de minado
+- **animacion_minado_3d.py** - Script de animación 3D
+- **graficar_bloques_3d.py** - Visualización de modelo geológico
+- **plan_minado_interactivo.py** - Dashboards interactivos
+- **agregar_insights.py** - Conclusiones e insights
+
+## Cómo Usar
+
+### Ver Animación Principal
+Abrir en navegador: `01_VISUALIZACIONES_INTERACTIVAS/animacion_3d_minado.html`
+- ▶ Presionar "REPRODUCIR" para ver extracción progresiva
+- 🔴 Rojo = bloques siendo extraídos este período
+- ⚪ Gris = bloques por extraer en el futuro
+- Estrategia: Ascendente de abajo hacia arriba (cut & fill)
+
+### Explorar Dashboard Ejecutivo
+Abrir: `01_VISUALIZACIONES_INTERACTIVAS/dashboard_plan_minado.html`
+Consolidación de 6 perspectivas: temporal, espacial, económica, geológica
+
+### Revisar Datos Fuente
+Ver archivos CSV en `02_DATOS_FUENTE/` con datos detallados de bloques, geología y planificación
+
+### Reproducir Análisis
+Ejecutar scripts Python desde `05_SCRIPTS_FUENTE/`:
+```bash
+python Plani2.py          # Regenerar plan de minado
+python planmainado_3d.py  # Regenerar animaciones y dashboards
+```
+
+## Conceptos Mineros Técnicos Implementados
+
+### Estrategia de Explotación
+- **Tipo**: Minería subterránea - Cut & Fill Ascendente
+- **Distribución**: Extracción desde profundidad máxima (-490m) hasta superficie (-5m)
+- **Ventaja**: Relleno con mineral estéril reduce porosidad y presiones estructurales
+
+### Criterio de Corte (Cut-off)
+- **Cut-off Grade Au**: 2.5 g/ton
+- **Destino Planta**: Ley ≥ 2.5 g/ton (lixiviación inmediata)
+- **Destino Stock**: Ley < 2.5 g/ton (acopio para reprocesamiento)
+
+### Parámetros Geológicos
+- **Bloques**: 200 unidades geotécnicas
+- **Rango Z**: -489.96m a -5.02m (484.94m de profundidad)
+- **Ley Au promedio**: variable por profundidad
+- **Tonelaje total**: ~520,000 toneladas
+
+### Métricas Económicas
+- **Precio oro**: 60 USD/g (simplificado)
+- **Períodos operacionales**: 10 (distribución en tiempo)
+- **Beneficio económico total**: Depende de leyes y costos operacionales
+- **Margen operacional**: Diferencia entre valor de mineral y costos directos
+
+## Herramientas Informáticas Utilizadas
+
+### Lenguaje de Programación
+- **Python 3.14** - Procesamiento de datos, análisis y generación de visualizaciones
+
+### Librerías Científicas
+- **Pandas 2.x** - Manipulación y análisis de datos estructurados (CSV)
+- **NumPy** - Operaciones numéricas y arrays
+- **Plotly 6.6** - Visualización interactiva (gráficos 3D, dashboards)
+- **Matplotlib 3.x** - Gráficas estáticas (PNG)
+- **mpl_toolkits.mplot3d** - Visualización 3D
+
+### Entorno de Desarrollo
+- **VS Code** - Editor de código
+- **Python venv** - Entorno virtual aislado
+- **Jupyter Notebooks** - Análisis exploratorio (opcional)
+
+### Formatos de Salida
+- **HTML/JavaScript (Plotly)** - Visualizaciones interactivas
+- **CSV** - Datos tabulares
+- **PNG** - Reportes estáticos
+- **PDF** - Informe consolidado
+
+## Resultados Clave
+
+### Operacionales
+✓ Plan de minado de 10 períodos con 20 bloques/período
+✓ Estrategia verificada basada en geología e intentos de corte
+✓ Distribución uniforme garantiza operaciones sostenidas
+
+### Económicos
+✓ Proyecto con márgenes positivos en todos los períodos
+✓ Flujo de caja sin déficit
+✓ ROI calculable sobre inversión inicial
+
+### Visualización
+✓ Animación 3D confirma estrategia cut & fill ascendente
+✓ Dashboards permiten monitoreo en tiempo real
+✓ Insights técnicos integrados en cada visualización
+
+## Generado
+03 de April de 2026
